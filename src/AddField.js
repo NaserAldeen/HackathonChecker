@@ -17,6 +17,14 @@ class AddField extends Component {
       this.setState({ inputValue: "" });
     }
   };
+  handleKeyPress = target => {
+    if (target.charCode == 13) {
+      if (this.state.inputValue != "") {
+        this.props.addMovie(this.state.inputValue);
+        this.setState({ inputValue: "" });
+      }
+    }
+  };
   render() {
     return (
       <div
@@ -26,9 +34,10 @@ class AddField extends Component {
         <input
           type="text"
           class="form-control"
-          placeholder="Add a movie.."
+          placeholder="Add a task.."
           value={this.state.inputValue}
           onChange={this.handleChange}
+          onKeyPress={this.handleKeyPress}
         />
         <div className="input-group-append">
           <button
@@ -50,7 +59,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(AddField);
+export default connect(null, mapDispatchToProps)(AddField);

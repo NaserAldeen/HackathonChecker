@@ -25,3 +25,9 @@ export const addMovie = movie => {
     payload: movie
   };
 };
+
+export const deleteAll = () => {
+  return {
+    type: "DELETE_ALL"
+  };
+};
